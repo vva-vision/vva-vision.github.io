@@ -17,6 +17,73 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Hero Slideshow
+    const slides = document.querySelectorAll('.slide');
+    const prevSlideBtn = document.querySelector('.prev-slide');
+    const nextSlideBtn = document.querySelector('.next-slide');
+    let currentSlideIndex = 0;
+    let slideInterval;
+    
+    // Function to show a specific slide
+    function showSlide(index) {
+        // Remove active class from all slides
+        slides.forEach(slide => slide.classList.remove('active'));
+        
+        // Add active class to current slide
+        slides[index].classList.add('active');
+        
+        // Update current index
+        currentSlideIndex = index;
+    }
+    
+    // Function to show next slide
+    function nextSlide() {
+        let nextIndex = currentSlideIndex + 1;
+        if (nextIndex >= slides.length) {
+            nextIndex = 0;
+        }
+        showSlide(nextIndex);
+    }
+    
+    // Function to show previous slide
+    function prevSlide() {
+        let prevIndex = currentSlideIndex - 1;
+        if (prevIndex < 0) {
+            prevIndex = slides.length - 1;
+        }
+        showSlide(prevIndex);
+    }
+    
+    // Set up event listeners for slideshow controls
+    if (prevSlideBtn && nextSlideBtn) {
+        prevSlideBtn.addEventListener('click', function() {
+            prevSlide();
+            resetSlideInterval();
+        });
+        
+        nextSlideBtn.addEventListener('click', function() {
+            nextSlide();
+            resetSlideInterval();
+        });
+    }
+    
+    // Function to start automatic slideshow
+    function startSlideshow() {
+        slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+    }
+    
+    // Function to reset slideshow interval
+    function resetSlideInterval() {
+        clearInterval(slideInterval);
+        startSlideshow();
+    }
+    
+    // Initialize slideshow
+    if (slides.length > 0) {
+        showSlide(0);
+        startSlideshow();
+    }
+    
     // Testimonial Slider
     const testimonialSlider = document.querySelector('.testimonial-slider');
     const prevBtn = document.querySelector('.prev-btn');

@@ -238,16 +238,72 @@ nav {
     align-items: center;
 }
 
-.video-frame {
+.slideshow-container {
     width: 100%;
     max-width: 550px;
     aspect-ratio: 16/9;
     background-color: var(--dark-bg-color);
-    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.slideshow-images {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.slideshow-controls {
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+    z-index: 2;
+}
+
+.slideshow-controls button {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.slideshow-controls button:hover {
+    background-color: var(--accent-color);
+}
+    /* border-radius: 8px;
     overflow: hidden;
     position: relative;
     box-shadow: var(--box-shadow);
-}
+} */
 
 .placeholder-video {
     width: 100%;
@@ -800,5 +856,22 @@ footer {
     .stats-container {
         flex-direction: column;
         gap: 20px;
+    }
+    
+    /* Improved slideshow controls for mobile */
+    .slideshow-controls {
+        bottom: 10px;
+        padding: 0 10px;
+    }
+    
+    .slideshow-controls button {
+        width: 50px;
+        height: 50px;
+        background-color: rgba(0, 0, 0, 0.7);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .slideshow-controls button i {
+        font-size: 18px;
     }
 }
