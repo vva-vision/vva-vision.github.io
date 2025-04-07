@@ -425,6 +425,7 @@ nav {
     opacity: 0.3;
     pointer-events: none;
     transition: var(--transition);
+    z-index: 1;
 }
 
 .placeholder-image {
@@ -436,7 +437,13 @@ nav {
 
 .portfolio-info {
     padding: 25px;
-    background-color: var(--background-color);
+    background-color: rgba(18, 18, 18, 0.8);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    color: var(--light-text);
 }
 
 .portfolio-info h3 {
@@ -445,7 +452,7 @@ nav {
 }
 
 .portfolio-info p {
-    color: var(--secondary-color);
+    color: var(--light-text);
     margin-bottom: 15px;
     font-size: 14px;
 }
@@ -456,6 +463,7 @@ nav {
     font-size: 14px;
     display: inline-block;
     position: relative;
+    opacity: 1;
 }
 
 .view-project::after {
