@@ -384,12 +384,14 @@ nav {
     padding: 100px 5%;
     max-width: 1400px;
     margin: 0 auto;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
+    width: 100%; /* Ensure grid stays within container */
 }
 
 .portfolio-item {
@@ -400,6 +402,7 @@ nav {
     display: flex;
     flex-direction: column;
     background-color: var(--primary-color);
+    max-width: 100%; /* Ensure items don't exceed container width */
 }
 
 .portfolio-item:hover {
@@ -411,6 +414,7 @@ nav {
     aspect-ratio: 16/9;
     overflow: hidden;
     position: relative;
+    max-width: 100%; /* Ensure images don't exceed container width */
 }
 
 .portfolio-image img {
